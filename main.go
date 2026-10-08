@@ -5,6 +5,9 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+
+	"go-restaurant-management/middlewares"
+	"go-restaurant-management/routes"
 )
 
 func main() {
@@ -16,6 +19,16 @@ func main() {
 
 	router := gin.New()
 	router.Use(gin.Logger())
+	routes.UserRoutes(router)
+
+	router.Use(middlewares.Authentication())
+
+	routes.FoodRoutes(router)
+	routes.MenuRoutes(router)
+	routes.TableRoutes(router)
+	routes.OrderRoutes(router)
+	routes.OrderItemRoutes(router)
+	routes.InvoiceRoutes(router)
 
 	router.Run(":" + port)
 

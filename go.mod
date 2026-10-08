@@ -1,4 +1,4 @@
-module github.com/Yadhu-Ayyanchira/go-restaurant-management
+module go-restaurant-management
 
 go 1.26.5
 
